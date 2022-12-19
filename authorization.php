@@ -17,8 +17,7 @@ if (
             $userData = explode(" ", $user);
             if ($username == $userData[0]) {
                 if (password_verify($password, $userData[1])) {
-                    echo "Авторизация успешна";
-                    exit();
+                    header("location: cap.php");;
                 } else {
                     echo "Логин или пароль введен не верно!";
                 }
