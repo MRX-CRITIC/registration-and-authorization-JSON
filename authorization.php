@@ -17,7 +17,11 @@ if (
             $userData = explode(" ", $user);
             if ($username == $userData[0]) {
                 if (password_verify($password, $userData[1])) {
-                    header("location: cap.php");;
+                    session_start();
+                    $_SESSION['username'] = $username;
+                    header("location: base.php");
+                    /*echo "Авторизация успешна";*/
+                    exit();
                 } else {
                     echo "Логин или пароль введен не верно!";
                 }

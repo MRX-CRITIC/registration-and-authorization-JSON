@@ -1,6 +1,8 @@
 <link rel="stylesheet" href="style_authorization.css">
 <div class="center">
+
     <h1>Регистрация</h1>
+
     <form action="registration.php" method="post">
 
         <div class="txt_field">
@@ -22,6 +24,9 @@
         </div>
 
         <input type="submit">
+
     </form>
+
     <div class="signup_link">У Вас есть аккаунт? <a href="authorization_html.php">Авторизация</a>
-</div>
+    </div>
+

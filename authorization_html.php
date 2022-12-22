@@ -21,3 +21,11 @@
         <div class="signup_link">Вы новый пользователь? <a href="registration_html.php">Регистрация</a>
 </div>
 
+<?php
+
+session_start();
+if (!empty($_SESSION['username'])) {
+    header("location: base.php");
+}
+
+?>
