@@ -8,15 +8,9 @@
 }
 .info {
     display: grid;
-    grid-template-columns: 5vw 10vw 7vw 7vw 5vw;
+    grid-template-columns: 5vw 5vw 5vw 5vw;
     grid-template-rows: auto;
     text-align: center;
     margin: 1% 0 1% 65%;
     color: white;
-}
-header {
-    position: fixed;
-    top: 0;
-    z-index: 1;
-    width: 100%;
 }

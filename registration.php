@@ -6,6 +6,7 @@ if (
     && !empty($_POST['password'])
     && !empty($_POST['password_repeat'])
 ) {
+
     $username = $_POST['username'];
     $password = $_POST['password'];
 
@@ -14,27 +15,38 @@ if (
         echo "Пароль не совпадают!";
         exit();
     }
+
     // Хэшируем пароль
     $hash = password_hash($password, PASSWORD_DEFAULT);
-    if (is_readable("database.txt")) {
-        $fileData = trim(file_get_contents("database.txt"));
-        $fileData = preg_split("/\n/", $fileData);
+    $json = [];
+    if (is_readable("database.json")) {
+        $fileData = trim(file_get_contents("database.json"));
+        if (!empty($fileData)) {
 
-        // Проверка существующего логина
-        foreach ($fileData as $user) {
-            $login = explode(" ", $user)[0];
-            if ($username == $login) {
-                echo "Такой пользователь уже существует!";
-                exit();
+            // Проверка существующего логина
+            $json = json_decode($fileData);
+            foreach ($json as $user) {
+                if ($username == $user->username) {
+                    echo "Такой пользователь уже существует!";
+                    exit();
+                }
             }
         }
     }
 
+    $json[] = [
+        'username' => $username,
+        'password' => $hash,
+    ];
+
     // Запись в файл
-    file_put_contents("database.txt", $username . " " . $hash . "\n", FILE_APPEND);
+    $json = json_encode($json);
+    file_put_contents("database.json", $json);
     header("location: authorization_html.php");
 
 } else {
+
     header("location: registration_html.php");
+
 }
 

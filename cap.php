@@ -3,9 +3,9 @@
 <header>
     <div class="cap">
         <div class="info">
-            <a class="" href="">Главная</a>
-            <a class="" href="">Личный кабинет</a>
-            <a class="" href="">Поддержка</a>
+            <a href="base.php">Главная</a>
+            <a href="add_news.php">Добавить новость</a>
+            <a href="support.php">Поддержка</a>
             <a href="exit.php">Выход</a>
         </div>
     </div>
